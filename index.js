@@ -177,28 +177,6 @@ async function run() {
         res.send({admin : isAdmin})
     })
 
-        $set: {
-          thumb: data.thumb,
-          title: data.title,
-          totalHotel: data.totalHotel,
-          avgPrice: data.avgPrice,
-          descAbout: data.descAbout,
-          desc1: data.desc1,
-          visitPlace: data.visitPlace,
-          image1: data.image1,
-          image2: data.image2,
-          image3: data.image3,
-          rating: data.rating,
-          day: data.day,
-          Latitude: data.Latitude,
-          longitude: data.longitude,
-          status: data.status,
-        },
-      };
-      const result = await blogsCollection.updateOne(query, updateDoc, option);
-      res.json(result);
-    });
-
 
     // Make Admin jwt token
     app.get("/users/admin", verifyToken, async (req, res) => {
