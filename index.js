@@ -4,7 +4,7 @@ require("dotenv").config();
 const ObjectId = require("mongodb").ObjectId;
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
-const serviceAccount = require("./proplayers-firebase-adminsdk.json");
+const serviceAccount = require("./another-30a8f-firebase-adminsdk-pf5ys-15671544ac.json");
 const authRoutes = require("./routes/auth.js");
 const admin = require("firebase-admin");
 admin.initializeApp({
