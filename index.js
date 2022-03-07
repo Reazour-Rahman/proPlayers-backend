@@ -128,6 +128,55 @@ async function run() {
       const query = { _id: ObjectId(id) };
       const option = { upsert: true };
       const updateDoc = {
+
+          $set : {
+            thumb : data.thumb, 
+            title : data.title,
+            totalHotel : data.totalHotel,
+            avgPrice : data.avgPrice ,
+            descAbout : data.descAbout,
+            desc1 : data.desc1, 
+            visitPlace : data.visitPlace, 
+            image1 : data.image1, 
+            image2 : data.image2, 
+            image3 : data.image3,
+            rating : data.rating,
+            day : data.day,
+            Latitude : data.Latitude,
+            longitude : data.longitude,
+            status : data.status
+          }
+      }
+      const result = await blogsCollection.updateOne(query, updateDoc, option)
+      res.json(result)
+  })
+
+
+    //   app.get('/users/:email', async (req, res) => {
+    //     const email = req.params.email;
+    //     const query = { email: email };
+    //     const user = await usersCollection.findOne(query);
+    //     let isAdmin = false;
+    //     if (user?.role === 'admin') {
+    //         isAdmin = true;
+    //     }
+    //     res.json({ admin: isAdmin });
+    // })
+
+      app.get('/users/:email', async (req, res) => {
+        const email = req.params.email
+        const query =  {email :  email}
+        const user = await usersCollection.findOne(query)
+        let isAdmin = false
+        if (user?.role === 'admin') {
+            isAdmin = true
+        }
+        else{
+            isAdmin = false
+        }
+        res.send({admin : isAdmin})
+    })
+
         $set: {
           thumb: data.thumb,
           title: data.title,
@@ -149,6 +198,7 @@ async function run() {
       const result = await blogsCollection.updateOne(query, updateDoc, option);
       res.json(result);
     });
+
 
     // Make Admin jwt token
     app.get("/users/admin", verifyToken, async (req, res) => {
