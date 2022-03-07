@@ -47,12 +47,6 @@ async function verifyToken(req, res, next) {
 async function run() {
   try {
     await client.connect();
-    /* database */
-    const database = client.db("proPlayer");
-    const blogsCollection = database.collection("blogs");
-    const usersCollection = database.collection("users");
-    const userHelpCollection = database.collection("userHelp");
-
 
 
     // Please write down codes with commenting as like as top get request...
